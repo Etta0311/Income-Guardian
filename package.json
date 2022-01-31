@@ -1,0 +1,28 @@
+{
+  "name": "Income-Guardian",
+  "version": "1.0.0",
+  "description": "A daily expense tracker using MERN stack",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Etta0311/Income-Guardian.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Etta0311/Income-Guardian/issues"
+  },
+  "homepage": "https://github.com/Etta0311/Income-Guardian#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}
