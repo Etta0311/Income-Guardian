@@ -5,6 +5,42 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    password: String
+    expences: [Expence]
+  }
+
+  type Expence {
+    _id: ID!
+    title: String!
+    moneyStatus: ExpenceType!
+    transactionAmount: Int!
+    date: String!
+  }
+
+  input UserInput {
+    username: String!
+    email: String!
+    password: String!
+    confirmPW: String!
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  input CreateExpenceInput {
+    title: String!
+    moneyStatus: ExpenceType!
+    transactionAmount: Int!
+    date: String!
+  }
+
+  input UpdateExpenceInput {
+    title: String
+    moneyStatus: ExpenceType
+    transactionAmount: Int
+    date: String
   }
 
   type Query {
@@ -12,21 +48,15 @@ const typeDefs = gql`
     users: [User]
   }
 
-  input UserInput {
-    username: String!
-    email: String!
-    password: String!
-    confirmPassword: String!
-  }
-  
-  type Auth {
-    token: ID!
-    user: User
+  type Mutation {
+    signUp(userInput: UserInput!): Auth
+    login(username: String!, password: String!): Auth
+
+    createExpence(data: CreateExpenceInput!): Expence!
+    deleteExpence(_id: ID!): Expence
+    updateExpence(_id: ID!, data: UpdateExpenceInput): Expence!
   }
 
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    signUp(userInput: UserInput!): Auth
   }
 `;
 module.exports = typeDefs;
