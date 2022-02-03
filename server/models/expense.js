@@ -5,15 +5,18 @@ const expenceSchema = new Schema(
   {
     title: {
       type: String,
+      required: "Transection title is required.",
     },
     status: {
       type: String,
     },
     transactionAmount: {
       type: Number,
+      required: "Transection amount is required.",
     },
     date: {
       type: String,
+      required: "Transection date is required.",
     },
   },
   {
