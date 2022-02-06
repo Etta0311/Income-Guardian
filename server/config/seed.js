@@ -1,26 +1,12 @@
 const db = require("./connection");
-const { user, expense } = require("../models");
+const { User, Expense } = require("../models");
 
 db.once("open", async () => {
   try {
-    await expense.deleteMany({});
-    await user.deleteMany({});
+    await Expense.deleteMany({});
+    await User.deleteMany({});
 
-    const categories = await Category.insertMany([
-      { name: "Soft Toys" },
-      { name: "Educational" },
-      { name: "Electronics" },
-      { name: "Books" },
-      { name: "Puzzles" },
-      { name: "Construction" },
-      { name: "Dolls" },
-      { name: "Action Figures" },
-      { name: "Pretend Play" },
-    ]);
-
-    console.log("categories seeded");
-
-    const posts = await Post.insertMany([
+    const posts = await Expense.insertMany([
       {
         title: "Toy Kitchen",
         description:
