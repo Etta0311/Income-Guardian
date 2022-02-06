@@ -1,4 +1,3 @@
-
 const { Schema } = require("mongoose");
 
 const expenceSchema = new Schema(
@@ -6,9 +5,6 @@ const expenceSchema = new Schema(
     title: {
       type: String,
       required: "Transection title is required.",
-    },
-    status: {
-      type: String,
     },
     transactionAmount: {
       type: Number,

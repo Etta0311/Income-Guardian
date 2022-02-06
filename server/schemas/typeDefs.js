@@ -28,7 +28,7 @@ const typeDefs = gql`
     user: User
   }
 
-  input CreateExpenceInput {
+  input ExpenceInput {
     title: String!
     transactionAmount: Int!
     date: String!
