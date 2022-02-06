@@ -1,6 +1,6 @@
 <img alt="GitHub Followers" src="https://img.shields.io/github/followers/Etta0311"> <img alt="GitHub License" src="https://img.shields.io/apm/l/vim-mode">  <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/Etta0311/PWA-TextEditor">  <img alt="GitHub Commit Activity" src="https://img.shields.io/github/commit-activity/w/Etta0311/PWA-TextEditor">
 
-# PWA-TextEditor 
+# Income Guardian (Daily Expense Tracker) 
 
 ## Table of Contents
 
