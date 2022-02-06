@@ -9,6 +9,13 @@ const typeDefs = gql`
     expences: [Expence]
   }
 
+  // input UserInput {
+  //   username: String!
+  //   email: String!
+  //   password: String!
+  //   confirmPW: String!
+  // }
+
   type Expence {
     _id: ID!
     title: String!
@@ -16,11 +23,10 @@ const typeDefs = gql`
     date: String!
   }
 
-  input UserInput {
-    username: String!
-    email: String!
-    password: String!
-    confirmPW: String!
+  input ExpenceInput {
+    title: String
+    transactionAmount: Int!
+    date: String
   }
 
   type Auth {
@@ -28,30 +34,20 @@ const typeDefs = gql`
     user: User
   }
 
-  input ExpenceInput {
-    title: String!
-    transactionAmount: Int!
-    date: String!
-  }
-
-  input UpdateExpenceInput {
-    title: String
-    transactionAmount: Int
-    date: String
-  }
-
   type Query {
-    userById: User
-    users: [User]
+    me: User
   }
 
   type Mutation {
-    signUp(userInput: UserInput!): Auth
+    signUp(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-
-    createExpence(data: CreateExpenceInput!): Expence!
+    updateUser(
+      username: String!
+      email: String!
+      password: String!): User
+    addExpence(data: ExpenceInput!): Expence!
+    updateExpence(_id: ID!, data: ExpenceInput): Expence!
     deleteExpence(_id: ID!): Expence
-    updateExpence(_id: ID!, data: UpdateExpenceInput): Expence!
   }
 
   }
