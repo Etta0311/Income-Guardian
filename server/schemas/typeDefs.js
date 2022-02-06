@@ -12,7 +12,6 @@ const typeDefs = gql`
   type Expence {
     _id: ID!
     title: String!
-    status: ExpenceType!
     transactionAmount: Int!
     date: String!
   }
@@ -31,14 +30,12 @@ const typeDefs = gql`
 
   input CreateExpenceInput {
     title: String!
-    status: ExpenceType!
     transactionAmount: Int!
     date: String!
   }
 
   input UpdateExpenceInput {
     title: String
-    status: ExpenceType
     transactionAmount: Int
     date: String
   }
