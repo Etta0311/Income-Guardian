@@ -10,7 +10,6 @@ db.once("open", async () => {
       {
         title: "clothes",
         transactionAmount: "100",
-        date: "07022022"
       },
     ]);
 

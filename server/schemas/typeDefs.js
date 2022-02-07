@@ -31,7 +31,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
 
-    addExpense(title: String!, transactionAmount: Int!): Expense
+    addExpense(title: String!, transactionAmount: Int!, user: ID!): Expense
     updateExpense(_id: ID!, title: String!, transactionAmount: Int!): Expense
     deleteExpense(_id: ID!): Expense
   }

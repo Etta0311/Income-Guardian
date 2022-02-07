@@ -11,7 +11,7 @@ const resolvers = {
       throw new AuthenticationError("LOGIN required.");
     },
     // users: async () => {
-    //   const userData = await User.find({}).populate("expences");
+    //   const userData = await User.find({}).populate("expenses");
     //   console.log(userData);
 
     //   return userData;
@@ -21,7 +21,7 @@ const resolvers = {
     //   if (context.user) {
     //     return User.findOne({ _id: context.user._id })
     //       .select("-__v -password")
-    //       .populate("expences");
+    //       .populate("expenses");
     //   }
     //   throw new AuthenticationError("Login to continue.");
     // },
@@ -93,7 +93,7 @@ const resolvers = {
 
     updateExpense: async (
       parent,
-      { _id, title, transactionAmount, date },
+      { _id, title, transactionAmount },
       context
     ) => {
       if (context.user) {
