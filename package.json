@@ -22,7 +22,8 @@
     "url": "https://github.com/Etta0311/Income-Guardian/issues"
   },
   "homepage": "https://github.com/Etta0311/Income-Guardian#readme",
-  "devDependencies": {
-    "concurrently": "^7.0.0"
+  "devDependencies": {},
+  "dependencies": {
+    "concurrently": "^5.1.0"
   }
 }

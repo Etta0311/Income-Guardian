@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const expenceSchema = new Schema(
+const expenseSchema = new Schema(
   {
     title: {
       type: String,
@@ -19,6 +19,6 @@ const expenceSchema = new Schema(
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
 
-const Expense = mongoose.model("Expense", expenceSchema);
+const Expense = mongoose.model("Expense", expenseSchema);
 
-module.exports = { Expense, expenceSchema };
+module.exports =  Expense;

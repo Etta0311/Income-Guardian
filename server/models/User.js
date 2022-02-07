@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const expenceSchema = require("./Expense");
+// const { expenseSchema } = require("./Expense");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
@@ -22,7 +22,12 @@ const userSchema = new Schema(
       minlength: 8,
     },
     
-    expences: [expenceSchema],
+    expenses: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Expense',
+      },
+    ],
   },
   
   {

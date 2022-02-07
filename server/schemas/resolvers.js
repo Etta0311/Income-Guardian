@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     user: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("expences");
+        return User.findOne({ _id: context.user._id }).populate("expenses");
       }
       throw new AuthenticationError("LOGIN required.");
     },
@@ -84,7 +84,7 @@ const resolvers = {
         const newrecord = await Expense.create(args);
         const updateUser = await User.findOneAndUpdate(
           { _id: args.user },
-          { $push: { expences: newrecord._id } }
+          { $push: { expenses: newrecord._id } }
         );
         return { newrecord, updateUser };
       }

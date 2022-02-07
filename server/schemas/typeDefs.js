@@ -6,7 +6,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    expences: [Expence]
+    expenses: [Expense]
   }
 
   type Expense {
@@ -15,6 +15,7 @@ const typeDefs = gql`
     transactionAmount: Int!
     user: ID!
     created_at: String
+  }
 
   type Auth {
     token: ID!
@@ -30,11 +31,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
 
-    addExpence(title: String!, transactionAmount: Int!): Expence
-    updateExpence(_id: ID!, title: String!, transactionAmount: Int!): Expence
-    deleteExpence(_id: ID!): Expence
-  }
-
+    addExpense(title: String!, transactionAmount: Int!): Expense
+    updateExpense(_id: ID!, title: String!, transactionAmount: Int!): Expense
+    deleteExpense(_id: ID!): Expense
   }
 `;
 module.exports = typeDefs;
