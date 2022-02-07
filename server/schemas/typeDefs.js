@@ -9,12 +9,12 @@ const typeDefs = gql`
     expences: [Expence]
   }
 
-  // input UserInput {
-  //   username: String!
-  //   email: String!
-  //   password: String!
-  //   confirmPW: String!
-  // }
+  # input UserInput {
+  #   username: String!
+  #   email: String!
+  #   password: String!
+  #   confirmPW: String!
+  # }
 
   type Expence {
     _id: ID!
