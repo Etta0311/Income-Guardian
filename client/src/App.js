@@ -8,8 +8,11 @@ import {
 } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import { ChakraProvider } from "@chakra-ui/react";
-// Implimenting pages components
 
+// Implimenting pages components
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 // Construct main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -40,13 +43,13 @@ function App() {
     <ApolloProvider client={client}>
       
       <Router>
-        <Headers />
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
+          {/* <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/expenserecord" element={<Expenserecord />} />
+          <Route exact path="/expenserecord" element={<Expenserecord />} /> */}
         </Routes>
         <Footer />
       </Router>

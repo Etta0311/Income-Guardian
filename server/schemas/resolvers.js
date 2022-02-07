@@ -4,7 +4,7 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
+    user: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate("expences");
       }
@@ -52,8 +52,8 @@ const resolvers = {
       return { token, user };
     },
 
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("No user found.");
