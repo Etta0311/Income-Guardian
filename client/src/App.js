@@ -4,15 +4,16 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink
+  createHttpLink,
 } from "@apollo/client";
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 import { ChakraProvider } from "@chakra-ui/react";
 
 // Implimenting pages components
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+// import Login from "./pages/Login";
 
 // Construct main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -21,12 +22,12 @@ const httpLink = createHttpLink({
 
 const authLink = setContext((_, { headers }) => {
   // the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -40,22 +41,24 @@ const client = new ApolloClient({
 function App() {
   return (
     <ChakraProvider>
-    <ApolloProvider client={client}>
-      
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          {/* <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<Signup />} />
-          <Route exact path="/dashboard" element={<Dashboard />} />
-          <Route exact path="/expenserecord" element={<Expenserecord />} /> */}
-        </Routes>
-        <Footer />
-      </Router>
-
-    </ApolloProvider>
-  </ChakraProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            {/* <Route exact path="/login" element={<Login />} /> */}
+            {/* <Route exact path="/signup" element={<Signup />} /> */}
+            {/* <Route exact path="/dashboard" element={<Dashboard />} /> */}
+            {/* <Route
+              exact
+              path="/expenserecord"
+              element={<Expenserecord />}
+            /> */}
+          </Routes>
+          <Footer />
+        </Router>
+      </ApolloProvider>
+    </ChakraProvider>
   );
 }
 export default App;

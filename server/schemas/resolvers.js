@@ -70,22 +70,18 @@ const resolvers = {
       return { token, user };
     },
 
-    updateUser: async (parent, args, context) => {
+    updateUser: async (parent, { username, email, password }, context) => {
       if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, {
+        return await User.findByIdAndUpdate(context.user._id, { username, email, password }, {
           new: true,
         });
       }
       throw new AuthenticationError("LOGIN to continue.");
     },
 
-    addExpense: async (parent, { title, transactionAmount, date }, context) => {
+    addExpense: async (parent, args, context) => {
       if (context.user) {
-        const newrecord = await Expense.create({
-          title,
-          transactionAmount,
-          date,
-        });
+        const newrecord = await Expense.create(args);
         const updateUser = await User.findOneAndUpdate(
           { _id: args.user },
           { $push: { expences: newrecord._id } }
@@ -103,7 +99,7 @@ const resolvers = {
       if (context.user) {
         return await Expense.findByIdAndUpdate(
           { _id: _id },
-          { title, transactionAmount, date },
+          { title, transactionAmount },
           {
             new: true,
           }

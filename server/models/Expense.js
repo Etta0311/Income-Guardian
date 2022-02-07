@@ -11,9 +11,9 @@ const expenceSchema = new Schema(
       type: Number,
       required: "Transection amount is required.",
     },
-    date: {
-      type: String,
-      required: "Transection date is required.",
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }

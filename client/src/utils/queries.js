@@ -11,7 +11,6 @@ export const QUERY_PROFILES = gql`
         _id
         title
         transactionAmount
-        date
       }
     }
   }

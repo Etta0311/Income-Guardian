@@ -9,25 +9,12 @@ const typeDefs = gql`
     expences: [Expence]
   }
 
-  # input UserInput {
-  #   username: String!
-  #   email: String!
-  #   password: String!
-  #   confirmPW: String!
-  # }
-
-  type Expence {
+  type Expense {
     _id: ID!
     title: String!
     transactionAmount: Int!
-    date: String!
-  }
-
-  input ExpenceInput {
-    title: String
-    transactionAmount: Int!
-    date: String
-  }
+    user: ID!
+    created_at: String
 
   type Auth {
     token: ID!
@@ -41,12 +28,10 @@ const typeDefs = gql`
   type Mutation {
     signUp(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    updateUser(
-      username: String!
-      email: String!
-      password: String!): User
-    addExpence(data: ExpenceInput!): Expence!
-    updateExpence(_id: ID!, data: ExpenceInput): Expence!
+    updateUser(username: String!, email: String!, password: String!): User
+
+    addExpence(title: String!, transactionAmount: Int!): Expence
+    updateExpence(_id: ID!, title: String!, transactionAmount: Int!): Expence
     deleteExpence(_id: ID!): Expence
   }
 
