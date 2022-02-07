@@ -10,6 +10,10 @@ const resolvers = {
       }
       throw new AuthenticationError("LOGIN required.");
     },
+    expensesRecord: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Expense.find(params).sort({ createdAt: -1 });
+    },
     // users: async () => {
     //   const userData = await User.find({}).populate("expenses");
     //   console.log(userData);

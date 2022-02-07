@@ -77,9 +77,9 @@ function Nav() {
                       <Tab>
                         <RouterLink to="/">Home</RouterLink>
                       </Tab>
-                      <Tab>
+                      {/* <Tab>
                         <RouterLink to="/dashboard">Dashboard</RouterLink>
-                      </Tab>
+                      </Tab> */}
                       <Tab>
                         <RouterLink to="/login">Login/Sign Up</RouterLink>
                       </Tab>

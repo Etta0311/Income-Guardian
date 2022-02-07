@@ -24,6 +24,7 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    expensesRecord(username: String): [Expense]
   }
 
   type Mutation {

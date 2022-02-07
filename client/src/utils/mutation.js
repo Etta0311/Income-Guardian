@@ -34,6 +34,7 @@ export const ADD_EXPENCE = gql`
       user {
         _id
       }
+      created_at
     }
   }
 `;
@@ -55,6 +56,7 @@ export const UPDATE_EXPENSE = gql`
       user {
         _id
       }
+      created_at
     }
   }
 `;
