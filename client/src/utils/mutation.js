@@ -26,12 +26,35 @@ export const SIGNUP = gql`
 `;
 
 export const ADD_EXPENCE = gql`
-  mutation addExpence($data: ExpenceInput) {
-    addExpence(data: $ExpenceInput) {
+  mutation addExpence($title: String!, $transactionAmount: Int!, $user: ID!) {
+    addExpence(title: $title, transactionAmount: $transactionAmount, user: $user) {
       _id
       title
       transactionAmount
-      date
+      user {
+        _id
+      }
+    }
+  }
+`;
+
+export const UPDATE_EXPENSE = gql`
+  mutation updateExpense(
+    $_id: ID!
+    $title: String!
+    $transactionAmount: Int!
+  ) {
+    updateExpense(
+      _id: $_id
+      title: $title
+      transactionAmount: $transactionAmount
+    ) {
+      _id
+      title
+      transactionAmount
+      user {
+        _id
+      }
     }
   }
 `;

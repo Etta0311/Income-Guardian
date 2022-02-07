@@ -13,7 +13,7 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     transactionAmount: Int!
-    user: ID!
+    user: User
     created_at: String
   }
 
