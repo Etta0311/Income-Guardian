@@ -7,6 +7,7 @@ export const LOGIN = gql`
       user {
         _id
         username
+        email
       }
     }
   }
@@ -26,15 +27,11 @@ export const SIGNUP = gql`
 `;
 
 export const ADD_EXPENCE = gql`
-  mutation addExpence($title: String!, $transactionAmount: Int!, $user: ID!) {
-    addExpence(title: $title, transactionAmount: $transactionAmount, user: $user) {
+  mutation addExpence($title: String!, $transactionAmount: String!) {
+    addExpence(title: $title, transactionAmount: $transactionAmount) {
       _id
       title
       transactionAmount
-      user {
-        _id
-      }
-      created_at
     }
   }
 `;
@@ -43,7 +40,7 @@ export const UPDATE_EXPENSE = gql`
   mutation updateExpense(
     $_id: ID!
     $title: String!
-    $transactionAmount: Int!
+    $transactionAmount: String
   ) {
     updateExpense(
       _id: $_id
@@ -62,8 +59,8 @@ export const UPDATE_EXPENSE = gql`
 `;
 
 export const DELETE_EXPENCE = gql`
-  mutation deleteExpence($_Id: ID!) {
-    deleteExpence(_id: $_Id) {
+  mutation deleteExpence($_id: ID!) {
+    deleteExpence(_id: $_id) {
       _id
     }
   }

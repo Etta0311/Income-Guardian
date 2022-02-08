@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-  query user {
-    user {
+  query userById {
+    userById {
       _id
       username
       email
@@ -11,6 +11,7 @@ export const QUERY_USER = gql`
         _id
         title
         transactionAmount
+        created_at
       }
     }
   }

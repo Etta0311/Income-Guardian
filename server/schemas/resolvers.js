@@ -4,31 +4,26 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("expenses");
-      }
-      throw new AuthenticationError("LOGIN required.");
-    },
-    expensesRecord: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Expense.find(params).sort({ createdAt: -1 });
-    },
-    // users: async () => {
-    //   const userData = await User.find({}).populate("expenses");
-    //   console.log(userData);
-
-    //   return userData;
-    // },
-
-    // userById: async (parent, args, context) => {
+    // user: async (parent, args, context) => {
     //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id })
-    //       .select("-__v -password")
-    //       .populate("expenses");
+    //     return User.findOne({ _id: context.user._id }).populate("expenses");
     //   }
-    //   throw new AuthenticationError("Login to continue.");
+    //   throw new AuthenticationError("LOGIN required.");
     // },
+    users: async () => {
+      const Alluser = await User.find({}).populate("expenses");
+      console.log(Alluser);
+      return Alluser;
+    },
+
+    userById: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id })
+          .select("-__v -password")
+          .populate("expenses");
+      }
+      throw new AuthenticationError("Login to continue.");
+    },
   },
 
   Mutation: {
@@ -76,34 +71,55 @@ const resolvers = {
 
     updateUser: async (parent, { username, email, password }, context) => {
       if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, { username, email, password }, {
-          new: true,
-        });
-      }
-      throw new AuthenticationError("LOGIN to continue.");
-    },
-
-    addExpense: async (parent, args, context) => {
-      if (context.user) {
-        const newrecord = await Expense.create(args);
-        const updateUser = await User.findOneAndUpdate(
-          { _id: args.user },
-          { $push: { expenses: newrecord._id } }
+        return await User.findByIdAndUpdate(
+          context.user._id,
+          { username, email, password },
+          {
+            new: true,
+          }
         );
-        return { newrecord, updateUser };
       }
       throw new AuthenticationError("LOGIN to continue.");
     },
 
-    updateExpense: async (
-      parent,
-      { _id, title, transactionAmount },
-      context
-    ) => {
+    addExpense: async (parent, { title, transactionAmount }, context) => {
       if (context.user) {
-        return await Expense.findByIdAndUpdate(
-          { _id: _id },
-          { title, transactionAmount },
+        const newrecord = await Expense.create({
+          title,
+          transactionAmount,
+          user: context.user.username,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { expenses: newrecord._id } },
+          { new: true }
+        );
+        return newrecord;
+      }
+      throw new AuthenticationError("LOGIN to continue.");
+    },
+
+    updateExpense: async (parent, args, context) => {
+      if (context.user) {
+        let finduser = await User.findOne({
+          _id: context.user._id,
+        });
+
+        let Expense = finduser.expenses.find((Expense) => {
+          return Expense._id === args._id;
+        });
+
+        Expense.title = args.title;
+        Expense.transactionAmount = args.transactionAmount;
+        
+        return await User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $set: {
+              expenses: finduser.Expense,
+            },
+          },
           {
             new: true,
           }
