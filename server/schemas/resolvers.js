@@ -4,12 +4,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOne({ _id: context.user._id }).populate("expenses");
-    //   }
-    //   throw new AuthenticationError("LOGIN required.");
-    // },
     users: async () => {
       const Alluser = await User.find({}).populate("expenses");
       console.log(Alluser);
@@ -18,7 +12,7 @@ const resolvers = {
 
     userById: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id })
+        return User.findById({ _id: context.user._id })
           .select("-__v -password")
           .populate("expenses");
       }
@@ -67,19 +61,6 @@ const resolvers = {
       // When logged in
       const token = signToken(user);
       return { token, user };
-    },
-
-    updateUser: async (parent, { username, email, password }, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(
-          context.user._id,
-          { username, email, password },
-          {
-            new: true,
-          }
-        );
-      }
-      throw new AuthenticationError("LOGIN to continue.");
     },
 
     addExpense: async (parent, { title, transactionAmount }, context) => {

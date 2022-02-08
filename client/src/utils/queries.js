@@ -11,6 +11,7 @@ export const QUERY_USER = gql`
         _id
         title
         transactionAmount
+        user
         created_at
       }
     }

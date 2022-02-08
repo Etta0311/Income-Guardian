@@ -32,14 +32,18 @@ export const ADD_EXPENCE = gql`
       _id
       title
       transactionAmount
+      user {
+        _id
+      }
+      created_at
     }
   }
 `;
 
 export const UPDATE_EXPENSE = gql`
   mutation updateExpense(
-    $_id: ID!
-    $title: String!
+    $_id: ID
+    $title: String
     $transactionAmount: String
   ) {
     updateExpense(

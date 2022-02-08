@@ -13,7 +13,7 @@ const typeDefs = gql`
     _id: ID!
     title: String!
     transactionAmount: String!
-    user: string
+    user: User
     created_at: String
   }
 
@@ -25,16 +25,16 @@ const typeDefs = gql`
   type Query {
     users: [User]
     userById: User
+
   }
 
   type Mutation {
     signUp(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    updateUser(username: String!, email: String!, password: String!): User
 
     addExpense(title: String!, transactionAmount: String!): Expense
     updateExpense(_id: ID, title: String, transactionAmount: String): Expense
-    deleteExpense(_id: ID): Expense
+    deleteExpense(_id: ID!): Expense
   }
 `;
 module.exports = typeDefs;

@@ -4,7 +4,6 @@ import React from "react";
 // import { QUERY_USER } from "../utils/queries";
 import { Box, Center } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
-// import UpdatePost from "./modals/ModalUpdatePost";
 
 // Render record
 const Recordlist = ({ user }) => {
