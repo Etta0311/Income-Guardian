@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-// import { Link as RouterLink } from "react-router-dom";
 import { ADD_EXPENCE } from "../utils/mutation";
 import { QUERY_USER } from "../utils/queries";
 import Auth from "./../utils/auth";
@@ -65,7 +64,7 @@ const Expenseform = ({Expense}) => {
             <Input
               mb={4}
               value={newExpense.title}
-              placeholder="Name this record"
+              placeholder="Name this expense"
               name="title"
               type="title"
               id="title"
