@@ -3,7 +3,16 @@ import { useMutation } from "@apollo/client";
 import { DELETE_EXPENCE } from "../utils/mutation";
 import { QUERY_USER } from "../utils/queries";
 import { Box, Center, Text, Image, Heading, Button } from "@chakra-ui/react";
-
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+} from "@chakra-ui/react";
 // import UpdatePost from "./modals/ModalUpdatePost";
 
 // Render record
@@ -24,59 +33,25 @@ const Recordlist = ({ title, transactionAmount }) => {
   };
 
   return (
-    <Box px={4}>
-      <Text p={4}>Your Posts</Text>
-      {user && user.posts.length ? (
-        user.posts.map((post) => (
-          <Box
-            minH="400"
-            maxW="300"
-            mb={4}
-            borderColor="#1a535c"
-            borderRadius={20}
-            border="1px"
-            p={4}
-            key={post._id}
-          >
-            <Center>
-              {post.image ? (
-                <Image
-                  pb={4}
-                  maxH={200}
-                  objectFit="cover"
-                  borderRadius={10}
-                  src={post.image}
-                  alt="post feature"
-                />
-              ) : (
-                <Image mb={4} src="./images/no-image.png" />
-              )}
-            </Center>
-            <Heading h="50px" size="md">
-              {post.title}
-            </Heading>
-            <Text mb={4}>
-              {post.location}, {post.category.name}, {post.age}
-            </Text>
-            <Text mb={4}>{post.description}</Text>
-            <Text fontSize="sm" fontStyle="italic" mb={4}>
-              - {getDate(post.created_at / 1000)}
-            </Text>
-            <Center>
-              <UpdatePost post={post} categories={categories} />
-              <Button value={post._id} onClick={deletePost} mx={4} mt={4} p={4}>
-                Delete
-              </Button>
-            </Center>
-          </Box>
-        ))
-      ) : (
-        <Box p={4}>
-          <Text fontStyle="italic" p={4}>
-            Create a new post today!
-          </Text>
-        </Box>
-      )}
+    <Box m={12}>
+      <Table size="lg" variant="striped" colorScheme="teal">
+        <Thead>
+          <Tr>
+            <Th>Title</Th>
+            <Th>Amount($)</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          <Tr>
+            <Td>ASOS</Td>
+            <Td>100</Td>
+          </Tr>
+          <Tr>
+            <Td>Coles</Td>
+            <Td>52</Td>
+          </Tr>
+        </Tbody>
+      </Table>
     </Box>
   );
 };

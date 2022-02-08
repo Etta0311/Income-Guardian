@@ -16,7 +16,7 @@ const Dashboard = () => {
   return (
     <>
       {checkLogIn ? (
-        <Box>
+        <Box h="900px">
           <Center>
             <Heading m={8}> Expense Record</Heading>
             {/* <Button colorScheme='blue' onClick="/expenserecord "> Add </Button> */}

@@ -57,7 +57,7 @@ const Expenseform = ({Expense}) => {
 
   return (
     <>
-      <Box w="30%" mt={4}>
+      <Box w="30%" mt={4} pr={24}>
         <Center><Text p={4}>New Expense Record:</Text></Center>
         <form onSubmit={handleFormSubmit}>
           <FormControl>
