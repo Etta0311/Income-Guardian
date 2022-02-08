@@ -10,7 +10,7 @@ import { Box, Heading, Center } from "@chakra-ui/react";
 
 const Dashboard = () => {
   const data = useQuery(QUERY_USER);
-  const Expense = data.data?.userById.expences || [];
+  const Expense = data.data?.userById.expenses || [];
   const User = data.data?.userById;
   // const checkLogIn = Auth.loggedIn();
 

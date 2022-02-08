@@ -7,11 +7,10 @@ export const QUERY_USER = gql`
       username
       email
       password
-      expences {
+      expenses {
         _id
         title
         transactionAmount
-        user
         created_at
       }
     }

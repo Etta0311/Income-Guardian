@@ -1,6 +1,6 @@
 import React from "react";
 // import { useMutation } from "@apollo/client";
-// import { DELETE_EXPENCE } from "../utils/mutation";
+// import { DELETE_EXPENSE } from "../utils/mutation";
 // import { QUERY_USER } from "../utils/queries";
 import { Box, Center } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
@@ -24,7 +24,7 @@ const Recordlist = ({ user }) => {
   //   };
 
 
-//   const [removeExpense] = useMutation(DELETE_EXPENCE, {
+//   const [removeExpense] = useMutation(DELETE_EXPENSE, {
 //     refetchQueries: [{ query: QUERY_USER }],
 //   });
 

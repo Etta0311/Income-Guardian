@@ -26,9 +26,9 @@ export const SIGNUP = gql`
   }
 `;
 
-export const ADD_EXPENCE = gql`
-  mutation addExpence($title: String!, $transactionAmount: String!) {
-    addExpence(title: $title, transactionAmount: $transactionAmount) {
+export const ADD_EXPENSE = gql`
+  mutation addExpense($title: String!, $transactionAmount: String!) {
+    addExpense(title: $title, transactionAmount: $transactionAmount) {
       _id
       title
       transactionAmount
@@ -62,9 +62,9 @@ export const UPDATE_EXPENSE = gql`
   }
 `;
 
-export const DELETE_EXPENCE = gql`
-  mutation deleteExpence($_id: ID!) {
-    deleteExpence(_id: $_id) {
+export const DELETE_EXPENSE = gql`
+  mutation deleteExpense($_id: ID!) {
+    deleteExpense(_id: $_id) {
       _id
     }
   }

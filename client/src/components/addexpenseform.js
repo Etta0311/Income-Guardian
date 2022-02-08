@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { ADD_EXPENCE } from "../utils/mutation";
+import { ADD_EXPENSE } from "../utils/mutation";
 import { QUERY_USER } from "../utils/queries";
 import Auth from "./../utils/auth";
 
@@ -20,7 +20,7 @@ const Expenseform = ({Expense}) => {
     transactionAmount: "",
   });
 
-  const [addExpense] = useMutation(ADD_EXPENCE, {
+  const [addExpense] = useMutation(ADD_EXPENSE, {
     refetchQueries: [{ query: QUERY_USER }],
   });
 
