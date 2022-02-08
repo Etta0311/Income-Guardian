@@ -7,7 +7,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 // import UpdatePost from "./modals/ModalUpdatePost";
 
 // Render record
-const Recordlist = ({ Expenses }) => {
+const Recordlist = ({ user }) => {
   // const [updateExpense] = useMutation(UPDATE_EXPENSE, {
   //     refetchQueries: [QUERY_USER],
   //   });
@@ -25,20 +25,20 @@ const Recordlist = ({ Expenses }) => {
   //   };
 
 
-  const [removeExpense] = useMutation(DELETE_EXPENCE, {
-    refetchQueries: [{ query: QUERY_USER }],
-  });
+//   const [removeExpense] = useMutation(DELETE_EXPENCE, {
+//     refetchQueries: [{ query: QUERY_USER }],
+//   });
 
   // Delete a record
-  const deleteone = async (recordId) => {
-    try {
-      await removeExpense({
-        variables: { _id: recordId },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+//   const deleteone = async (recordId) => {
+//     try {
+//       await removeExpense({
+//         variables: { _id: recordId },
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
 
 //   if (!Expenses.length) {
 //     return (
@@ -53,6 +53,7 @@ const Recordlist = ({ Expenses }) => {
   return (
     <Box m={12}>
         <Center>
+        {/* {Expenses.map((Expense) => ( */}
       <Table size="lg" variant="striped" colorScheme="teal">
         <Thead>
           <Tr>
@@ -61,9 +62,13 @@ const Recordlist = ({ Expenses }) => {
           </Tr>
         </Thead>
         <Tbody>
+          {/* <Tr>
+            <Td>{Expense.title}</Td>
+            <Td>{Expense.transactionAmount}</Td>
+          </Tr> */}
           <Tr>
             <Td>ASOS</Td>
-            <Td>100</Td>
+            <Td>80</Td>
           </Tr>
           <Tr>
             <Td>Coles</Td>
@@ -73,6 +78,7 @@ const Recordlist = ({ Expenses }) => {
       </Table>
       </Center>
     </Box>
+    
   );
 };
 
