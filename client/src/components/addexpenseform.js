@@ -30,7 +30,7 @@ const Expenseform = ({Expense}) => {
 
     try {
         const user = Auth.getProfile();
-        const mutationResponse = await addExpense({
+        await addExpense({
           variables: {
             title: newExpense.title,
             transactionAmount: newExpense.transactionAmount,
@@ -64,7 +64,7 @@ const Expenseform = ({Expense}) => {
             <FormLabel htmlFor="title">Title</FormLabel>
             <Input
               mb={4}
-              value={newExpense && newExpense.title}
+              value={newExpense.title}
               placeholder="Name this record"
               name="title"
               type="title"
@@ -77,7 +77,7 @@ const Expenseform = ({Expense}) => {
               mb={4}
               placeholder="Amount"
               name="transactionAmount"
-              value={newExpense && newExpense.transactionAmount}
+              value={newExpense.transactionAmount}
               type="transactionAmount"
               id="transactionAmount"
               onChange={handleChange}
