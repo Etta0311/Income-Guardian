@@ -1,7 +1,7 @@
 import React from "react";
-import { useMutation } from "@apollo/client";
-import { DELETE_EXPENCE } from "../utils/mutation";
-import { QUERY_USER } from "../utils/queries";
+// import { useMutation } from "@apollo/client";
+// import { DELETE_EXPENCE } from "../utils/mutation";
+// import { QUERY_USER } from "../utils/queries";
 import { Box, Center } from "@chakra-ui/react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 // import UpdatePost from "./modals/ModalUpdatePost";
